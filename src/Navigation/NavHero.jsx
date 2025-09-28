@@ -7,6 +7,7 @@ function NavHero() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([]);
   const [editId, setEditId] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const addTask = () => {
     if (!task.trim()) return;
@@ -40,27 +41,46 @@ function NavHero() {
         <div className="nav-content">
           <img src={logo} alt="Logo" className="logo" />
           <h1>To-Do App</h1>
-          <ul className="nav-list">
-            <li className="listitem">Home</li>
-            <li className="listitem">About</li>
-            <li className="listitem">Contact</li>
+
+          {/* Menu Items */}
+          <ul className={`nav-list ${menuOpen ? "open" : ""}`}>
+            <li className="listitem">
+              <a href="#home">Home</a>
+            </li>
+            <li className="listitem">
+              <a href="#about">About</a>
+            </li>
+            <li className="listitem">
+              <button>
+                <a href="#contact">Contact</a>
+              </button>
+            </li>
           </ul>
+
+          {/* Hamburger */}
+          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <section className="hero">
+      <section id="home" className="hero">
         <img src={heroImage} alt="Hero" className="hero-img" />
         <div className="hero-overlay">
           <h1>Organize Your Life</h1>
           <p>Manage your tasks efficiently with this simple To-Do App</p>
-          <button>Add Task Below</button>
+          <button>
+            <a href="#add"> Add Task Below</a>
+          </button>
         </div>
       </section>
 
       {/* To-Do Section */}
       <section className="todo-section">
-        <h2>Your Tasks</h2>
+        <h2 id="add">Your Tasks</h2>
         <div className="task-input">
           <input
             type="text"
@@ -83,6 +103,45 @@ function NavHero() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section id="about" className="about-section">
+        <h2>About This App</h2>
+        <p>
+          This is my very first application built using React! I created this
+          To-Do App to practice and understand the basics of React. In this
+          project, I learned how to use React components, manage state using{" "}
+          <strong>useState</strong>, handle events, and create dynamic,
+          interactive UI.
+        </p>
+        <p>
+          I divided my app into multiple sections: a <strong>Navbar</strong> for
+          navigation, a <strong>Hero</strong> section with an image and overlay
+          text, a <strong>To-Do</strong> section where users can add, edit,
+          delete, and complete tasks, and finally a <strong>Contact</strong>{" "}
+          section with my social links.
+        </p>
+        <p>
+          This project helped me understand React concepts like component
+          hierarchy, passing props, conditional rendering, and responsive
+          design. It also taught me how to combine CSS with React for styling
+          and handle mobile responsiveness with a hamburger menu.
+        </p>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact-section">
+        <h2>Contact Me</h2>
+        <div className="social-links">
+          <a
+            href="https://www.linkedin.com/in/aditya-kumar-sah-4a343a312/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a href="mailto:sahadityakumarr@gmail.com">Email</a>
+        </div>
       </section>
     </div>
   );
