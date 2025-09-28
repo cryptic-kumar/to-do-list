@@ -1,4 +1,4 @@
-import Nav from "./Navigation/Nav";
+import Nav from "./Navigation/NavHero";
 
 function App() {
   return (
